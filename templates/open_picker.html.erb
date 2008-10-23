@@ -1,4 +1,4 @@
-<div class="image_picker">
+<div style="width: 500px">
   <%= hidden_field_tag :target_field, @field %>
   <%= hidden_field_tag :default_image, "/images/no_image.jpg" %>
   
@@ -7,7 +7,7 @@
   </div>
   
   <% if defined?(WillPaginate) -%>
-    <div class="center clear">
+    <div style="text-align:center; clear:both;">
       <%= will_paginate @images, :renderer => ImagePicker::LinkRenderer %>
     </div>
   <% end -%>
@@ -29,7 +29,7 @@
       <% end -%>
     </table>
   <% else -%>
-    <div class="nothing">
+    <div style="margin:10px; text-align:center; font-style:italic;">
       Nothing found.
     </div>
   <% end -%>
