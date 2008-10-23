@@ -13,8 +13,8 @@ var ImagePicker = {
 	},
 	
 	open_picker:function(params) {
-		controller = $H(params).unset('controller');
-		Modalbox.show('/' + controller + '/open_picker?' + $H(params).toQueryString(),
+		url = $H(params).unset('url');
+		Modalbox.show(url + '?' + $H(params).toQueryString(),
 			{title: 'Select an image...', width: 520, afterLoad: ImagePicker.setup});
 	}
 };
