@@ -18,11 +18,13 @@
         <tr>
           <% e.compact.each do |i| -%>
             <td style="text-align:center" valign="top">
-              <%= link_to_remote image_tag(i.thumbnail, :size => "140x90", :alt => i.title), :url => {:action => "pick", :field => @field, :id => i}, :method => :post %>
+              <%= link_to_remote image_tag(i.thumbnail, :alt => i.title), :url => {:action => "pick", :field => @field, :id => i}, :method => :post %>
               <br/>
               <strong><%= i.title %></strong>
-              <br/>
-              <%= i.description %>
+              <% if i.respond_to?(:description) -%>
+                <br/>
+                <%= i.description %>
+              <% end -%>
             </td>
           <% end -%>
         </tr>

@@ -17,7 +17,7 @@ module ImagePicker
           image = Image.find(params[:id])
           field = params[:field]
           render :update do |page|
-            page.call "parent.ImagePicker.pick", field, image.id, image.thumbnail
+            page.call "parent.ImagePicker.pick", field, image.id, image.title, image.thumbnail
           end
         end
       end

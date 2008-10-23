@@ -2,6 +2,7 @@
 
 A simple, customizable image browser.
 
+
 == Installation
 
 Install the gem directly:
@@ -16,6 +17,57 @@ Or install the gem in your Rails project as a plugin:
 Or clone the project:
 
   git clone git://github.com/pelargir/image_picker.git
+
+Then copy the required image, JS, and CSS files into your Rails project
+
+  rake image_picker:install_files
+
+
+== Usage
+
+First, add the picker to your view and pass it the name of the image
+being picked. This name is used to create a hidden field that stores
+the database ID of the image that gets picked:
+
+  <%= image_picker :avatar %>
+  
+Now tell your controller that you'll be picking images, and which
+ActiveRecord model you'll be using:
+
+  class SomeController < ActionController::Base
+    image_picker :model => Image
+  end
+
+The ActiveRecord class must respond to three method calls:
+
+  thumbnail: the path to the image's thumbnail (e.g. /images/foo_small.gif)
+  title: a friendly title for the image
+  description: a description of the image (optional)
+
+That's it! The picker will show up in your view and, once you've
+picked an image, its database ID will be set as the value of the
+hidden field "<name>_id" where <name> is the name you passed
+to the image_picker helper in your view. The hidden field can
+then be submitted via a form or referenced in JavaScript.
+
+
+== Other Options
+
+The controller helper accepts any arguments you can pass to an
+ActiveRecord finder. For example:
+
+  class SomeController < ActionController::Base
+    image_picker :model => Image, :order => "created_at DESC"
+  end
+
+If the will_paginate plugin is installed, the image picker will
+use it automatically. You can pass pagination options to the
+controller helper as well. For example:
+
+  class SomeController < ActionController::Base
+    image_picker :model => Image, :per_page => 6
+  end
+
 
 == Resources
 

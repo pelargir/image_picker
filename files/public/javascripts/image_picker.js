@@ -1,7 +1,8 @@
 var ImagePicker = {
-	pick:function(field, image_id, image_url) {
+	pick:function(field, image_id, image_title, image_url) {
 		$(field + '_id').value = image_id;
 		$(field).src = image_url;
+		$(field).alt = image_title;
 		Modalbox.hide();
 	},
 	
