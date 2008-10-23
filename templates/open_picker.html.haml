@@ -1,0 +1,28 @@
+.image_picker
+  =hidden_field_tag :target_field, @field
+  =hidden_field_tag :default_image, REGISTRY[:default_thumb]
+  
+  =render :partial => "search"
+  
+  -if params[:terms].blank?
+    %div{:style => "float:right"}
+      =link_to "clear image", "javascript:void(0)", :id => "clear"
+  %div.clear
+  
+  .center.clear
+    =will_paginate @images, :renderer => WillPaginate::ImagePickerLinkRenderer
+  
+  -if @images.any?
+    %table{:border => 0, :cellpadding => 10, :cellspacing => 5}
+      -@images.in_groups_of(3) do |e|
+        %tr
+          -e.compact.each do |i|
+            %td{:style => "text-align:center", :valign => "top"}
+              =link_to_remote image_tag(i.image.url(:thumb), :size => "140x90", :alt => i.title), :url => pick_images_path(:field => @field, :id => i), :method => :post
+              %br
+              %strong=i.title
+              %br
+              =i.description
+  -else
+    .nothing
+      Nothing found.
