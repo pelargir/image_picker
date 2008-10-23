@@ -5,17 +5,18 @@ module ImagePicker
     end
     
     module ClassMethods
-      def image_picker
+      def image_picker(model, options={})
         define_method "open_picker" do
           @field = params[:field]
-          @images = Image.paginate(:order => "created_at DESC", :page => params[:page], :per_page => 6)
-          render :file => "#{RAILS_ROOT}/vendor/plugins/image_picker/templates/open_picker.html.haml"
+          @images = defined?(WillPaginate) ? model.paginate(options.merge(:page => params[:page])) : model.all(options)
+          render :file => "#{RAILS_ROOT}/vendor/plugins/image_picker/templates/open_picker.html.erb"
         end
 
         define_method "pick" do
-          @field = params[:field]
+          image = Image.find(params[:id])
+          field = params[:field]
           render :update do |page|
-            page.call "parent.ImagePicker.pick", @field, @image.id, @image.image.url(:thumb)
+            page.call "parent.ImagePicker.pick", field, image.id, image.thumbnail
           end
         end
       end

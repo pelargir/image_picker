@@ -1,0 +1,36 @@
+<div class="image_picker">
+  <%= hidden_field_tag :target_field, @field %>
+  <%= hidden_field_tag :default_image, "/images/no_image.jpg" %>
+  
+  <div style="float:right">
+    <%= link_to_function "clear image", "ImagePicker.clear($('target_field').value, $('default_image').value);", :id => "clear" %>
+  </div>
+  
+  <% if defined?(WillPaginate) -%>
+    <div class="center clear">
+      <%= will_paginate @images, :renderer => ImagePicker::LinkRenderer %>
+    </div>
+  <% end -%>
+  
+  <% if @images.any? -%>
+    <table border="0", cellpadding="10" cellspacing="5">
+      <% @images.in_groups_of(3) do |e| -%>
+        <tr>
+          <% e.compact.each do |i| -%>
+            <td style="text-align:center" valign="top">
+              <%= link_to_remote image_tag(i.thumbnail, :size => "140x90", :alt => i.title), :url => {:action => "pick", :field => @field, :id => i}, :method => :post %>
+              <br/>
+              <strong><%= i.title %></strong>
+              <br/>
+              <%= i.description %>
+            </td>
+          <% end -%>
+        </tr>
+      <% end -%>
+    </table>
+  <% else -%>
+    <div class="nothing">
+      Nothing found.
+    </div>
+  <% end -%>
+</div>
