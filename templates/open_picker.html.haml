@@ -10,7 +10,7 @@
   %div.clear
   
   .center.clear
-    =will_paginate @images, :renderer => WillPaginate::ImagePickerLinkRenderer
+    =will_paginate @images, :renderer => ImagePicker::LinkRenderer
   
   -if @images.any?
     %table{:border => 0, :cellpadding => 10, :cellspacing => 5}

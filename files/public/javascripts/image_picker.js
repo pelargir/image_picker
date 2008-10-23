@@ -17,7 +17,8 @@ var ImagePicker = {
 	},
 	
 	open_picker:function(params) {
-		Modalbox.show('/images/open_picker?' + $H(params).toQueryString(),
+		controller = $H(params).unset('controller');
+		Modalbox.show('/' + controller + '/open_picker?' + $H(params).toQueryString(),
 			{title: 'Select an image...', width: 520, afterLoad: ImagePicker.setup});
 	},
 	
