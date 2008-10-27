@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/pelargir/image_picker"
   s.description = "A simple, customizable image browser."
   s.has_rdoc = true
-  s.authors  = ["Matthew Bass", "Terralien"]
+  s.authors  = ["Matthew Bass"]
   s.files    = [
     "CHANGELOG",
     "files/public/images/no_image.jpg",
