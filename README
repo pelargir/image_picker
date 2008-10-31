@@ -2,7 +2,6 @@
 
 A simple, customizable image browser.
 
-
 == Installation
 
 Install the gem directly:
@@ -18,10 +17,9 @@ Or clone the project:
 
   git clone git://github.com/pelargir/image_picker.git
 
-Then copy the required image, JS, and CSS files into your Rails project:
+Then install the required image, JS, and CSS files into your Rails project:
 
-  rake image_picker:install_files
-
+  rake image_picker:install
 
 == Usage
 
@@ -50,7 +48,6 @@ hidden field "<name>_id" where <name> is the name you passed
 to the image_picker helper in your view. The hidden field can
 then be submitted via a form or referenced in JavaScript.
 
-
 == Other Options
 
 The controller helper accepts any arguments you can pass to an
@@ -67,7 +64,6 @@ controller helper as well. For example:
   class SomeController < ActionController::Base
     image_picker :model => Image, :per_page => 6
   end
-
 
 == Resources
 
