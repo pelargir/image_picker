@@ -18,7 +18,7 @@ Or clone the project:
 
   git clone git://github.com/pelargir/image_picker.git
 
-Then copy the required image, JS, and CSS files into your Rails project
+Then copy the required image, JS, and CSS files into your Rails project:
 
   rake image_picker:install_files
 
