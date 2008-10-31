@@ -3,11 +3,9 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../lib/asset_copier')
 
-namespace :asset_copier do
-  namespace :image_picker do
-    desc "Install files required by image_picker"
-    task :copy do  
-      AssetCopier.copy
-    end
+namespace :image_picker do
+  desc "Install files required by image_picker"
+  task :install do  
+    AssetCopier.copy
   end
 end
