@@ -6,8 +6,7 @@ A simple, customizable image browser.
 
 Install the gem directly:
 
-  gem sources -a http://gems.github.com (you only have to do this once)
-  sudo gem install pelargir-image_picker
+  sudo gem install pelargir-image_picker --source=http://gems.github.com
   
 Or install the gem in your Rails project as a plugin:
   
