@@ -10,22 +10,24 @@ Gem::Specification.new do |s|
   s.authors  = ["Matthew Bass"]
   s.files    = [
     "CHANGELOG",
+    "deleted_files",
     "files/public/images/no_image.jpg",
     "files/public/images/spinner.gif",
     "files/public/javascripts/image_picker.js",
     "files/public/javascripts/modalbox.js",
     "files/public/stylesheets/modalbox.css",
+    "image_picker.gemspec",
 		"init.rb",
 		"install.rb",
 		"lib/image_picker.rb",
+		"lib/image_picker/asset_copier.rb",
 		"lib/image_picker/controller.rb",
 		"lib/image_picker/link_renderer.rb",
     "MIT-LICENSE",
     "Rakefile",
 		"README",
-		"tasks/image_picker.rake",
-		"templates/open_picker.html.erb",
-		"image_picker.gemspec"
+		"tasks/asset_copier.rake",
+		"templates/open_picker.html.erb"
 		]
   s.rdoc_options = ["--main", "README"]
   s.extra_rdoc_files = ["README"]
